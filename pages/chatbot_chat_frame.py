@@ -41,4 +41,7 @@ class ChatbotChatFrame(BasePage):
     def click_go_to_main_menu(self):
         self.click(self.btn_go_to_menu)
         return self
+    
+    def has_go_to_main_menu(self):
+        return self.has_element(self.btn_go_to_menu, 5)
         

@@ -52,3 +52,15 @@ class TestChatbot:
         assert pricing_page.is_pricing_page()
         assert pricing_page.has_pricing_title()
         chatbot_chat_frame.screenshot_as_png("To pricing page but chat error message.")
+
+    @allure.story("To pricing page but the message is in chinese.")
+    def test_to_pricing_page_but_the_message_is_in_chinese(self ,setup):
+        home_page = HomePage(setup)
+        chatbot_chat_frame = ChatbotChatFrame(setup)
+        pricing_page = PricingPage(setup)
+        home_page.switch_to_frame("chatbot-chat-frame")
+        chatbot_chat_frame.click_chatbot_icon()
+        assert chatbot_chat_frame.has_greet_message()
+        chatbot_chat_frame.send_message("我想知道價格")
+        assert chatbot_chat_frame.has_go_to_main_menu()
+        chatbot_chat_frame.screenshot_as_png("To pricing page but the message is in chinese.")
