@@ -25,5 +25,5 @@ def pytest_runtest_makereport(item, call):
     rep = outcome.get_result()
     if rep.when == "call" and rep.failed:
         if hasattr(driver, "get_screenshot_as_png"):
-            allure.attach(driver.get_screenshot_as_png(), "異常截圖", allure.attachment_type.PNG)
+            allure.attach(driver.get_screenshot_as_png(), "Error screenshot.", allure.attachment_type.PNG)
 

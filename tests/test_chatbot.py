@@ -57,10 +57,20 @@ class TestChatbot:
     def test_to_pricing_page_but_the_message_is_in_chinese(self ,setup):
         home_page = HomePage(setup)
         chatbot_chat_frame = ChatbotChatFrame(setup)
-        pricing_page = PricingPage(setup)
         home_page.switch_to_frame("chatbot-chat-frame")
         chatbot_chat_frame.click_chatbot_icon()
         assert chatbot_chat_frame.has_greet_message()
         chatbot_chat_frame.send_message("我想知道價格")
         assert chatbot_chat_frame.has_go_to_main_menu()
         chatbot_chat_frame.screenshot_as_png("To pricing page but the message is in chinese.")
+
+    @allure.story("Sending a negative message shouldn't show a compare plans.")
+    def test_sending_a_negative_message_shouldnt_show_a_compare_plans(self ,setup):
+        home_page = HomePage(setup)
+        chatbot_chat_frame = ChatbotChatFrame(setup)
+        home_page.switch_to_frame("chatbot-chat-frame")
+        chatbot_chat_frame.click_chatbot_icon()
+        assert chatbot_chat_frame.has_greet_message()
+        chatbot_chat_frame.send_message("I don't want to know the price")
+        assert not chatbot_chat_frame.has_compare_plans()
+        chatbot_chat_frame.screenshot_as_png("Sending a negative message shouldn't show a compare plans.")

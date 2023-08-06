@@ -30,6 +30,9 @@ class ChatbotChatFrame(BasePage):
         self.click(self.btn_compare_plans)
         return self
     
+    def has_compare_plans(self):
+        return self.has_element(self.btn_compare_plans, 5)
+    
     def send_message(self, text):
         self.input(self.input_chat_message, text)
         self.click(self.btn_send_message)
