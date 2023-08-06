@@ -7,6 +7,7 @@ class ChatbotChatFrame(BasePage):
     btn_chatbot_icon = (By.XPATH, "//div[@class='bubble']")
     btn_have_questions = (By.XPATH, "//span[contains(text(), 'I have questions')]")
     btn_menu_pricing = (By.XPATH, "//span[contains(text(), 'Pricing')]")
+    btn_go_to_menu = (By.XPATH, "//span[contains(text(), 'Go to main menu')]")
     btn_compare_plans = (By.XPATH, "//div[contains(text(), 'Compare plans')]")
     input_chat_message = (By.XPATH, "//input[@placeholder='輸入訊息']")
     btn_send_message = (By.XPATH, "//div[@class='send-icon']")
@@ -36,4 +37,8 @@ class ChatbotChatFrame(BasePage):
 
     def has_greet_message(self):
         return self.has_element(self.text_greet_message, 5)
+    
+    def click_go_to_main_menu(self):
+        self.click(self.btn_go_to_menu)
+        return self
         
